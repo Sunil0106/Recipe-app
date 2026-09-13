@@ -150,7 +150,7 @@ categoriesContainerEl.addEventListener("click", async (e) => {
             strCategory: button.innerText,
           },
         ];
-
+  navBar.classList.remove("search-active");
   searchFood = "";
   skip = 0;
   paginationScrollLeft = 0;
