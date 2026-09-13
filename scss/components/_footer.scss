@@ -33,12 +33,14 @@ footer {
       background: var.$primary-clr;
       color: var.$button-text;
 
-      &:hover {
-        background: var.$primary-hover;
-      }
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background: var.$primary-hover;
+        }
 
-      &:active {
-        background: var.$primary-clr;
+        &:active {
+          background: var.$primary-clr;
+        }
       }
     }
   }

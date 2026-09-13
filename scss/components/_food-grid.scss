@@ -42,55 +42,41 @@ main .food-display-container {
         color: var.$favorite;
         font-weight: 900;
         cursor: pointer;
-        transition: transform 0.15s linear;
+        -webkit-tap-highlight-color: transparent;
 
+        .bi-heart,
+        .bi-heart-fill {
+          display: inline-block;
+          transition: transform 0.15s linear;
+        }
         .bi-heart-fill {
           display: none;
         }
 
-        &:hover {
-          .bi-heart {
-            display: none;
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            .bi-heart {
+              display: none;
+            }
+            .bi-heart-fill {
+              display: inline-block;
+              transform: scale(1.5);
+            }
           }
-
-          .bi-heart-fill {
-            display: inline;
+          &:active {
+            .bi-heart-fill {
+              display: inline-block;
+              transform: scale(1);
+            }
           }
         }
-
-        &:active {
-          bottom: 0.3em;
-
-          .bi-heart-fill {
-            transform: scale(1.5);
-          }
-        }
-
         &.is-favorite {
           .bi-heart {
             display: none;
           }
 
           .bi-heart-fill {
-            display: block;
-          }
-
-          &:hover {
-            .bi-heart-fill {
-              transform: scale(1.5);
-            }
-          }
-
-          &:active {
-            .bi-heart {
-              display: inline;
-            }
-
-            .bi-heart-fill {
-              display: none;
-              transform: scale(1.5);
-              bottom: 0.3em;
-            }
+            display: inline-block;
           }
         }
       }
@@ -127,11 +113,13 @@ main .food-display-container {
         cursor: pointer;
         transition: all 0.15s ease-in;
 
-        &:hover {
-          color: var.$primary-clr;
-          text-decoration: underline;
-          text-underline-offset: 4px;
-          text-underline-position: left;
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            color: var.$primary-clr;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-underline-position: left;
+          }
         }
       }
     }

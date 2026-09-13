@@ -74,21 +74,23 @@ header nav {
         color: var.$favorite;
       }
 
-      &:hover {
-        background: var.$primary-hover;
-      }
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background: var.$primary-hover;
+        }
 
-      &:hover i {
-        color: var.$button-text;
-      }
+        &:hover i {
+          color: var.$button-text;
+        }
 
-      &:active {
-        background: var.$primary-clr;
-      }
+        &:active {
+          background: var.$primary-clr;
+        }
 
-      &:active i {
-        color: var.$favorite;
-        transform: scale(1.1);
+        &:active i {
+          color: var.$favorite;
+          transform: scale(1.1);
+        }
       }
     }
   }
@@ -170,12 +172,14 @@ header .categories-container {
       background: var.$primary-clr;
       color: var.$button-text;
 
-      &:hover {
-        background: var.$primary-hover;
-      }
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background: var.$primary-hover;
+        }
 
-      &:active {
-        background: var.$primary-clr;
+        &:active {
+          background: var.$primary-clr;
+        }
       }
     }
   }

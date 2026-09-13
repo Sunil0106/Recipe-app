@@ -72,8 +72,10 @@ main section.food-recipe-display {
         transition: background 0.2s ease;
         cursor: pointer;
 
-        &:hover {
-          background: var.$primary-clr;
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            background: var.$primary-clr;
+          }
         }
       }
     }
@@ -120,14 +122,16 @@ main section.food-recipe-display {
 
       gap: 0.3em;
 
-      &:hover {
-        border-color: var.$youtube-red-darker;
-        color: var.$youtube-red;
-      }
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          border-color: var.$youtube-red-darker;
+          color: var.$youtube-red;
+        }
 
-      &:active {
-        border-color: var.$border;
-        color: var.$border;
+        &:active {
+          border-color: var.$border;
+          color: var.$border;
+        }
       }
     }
   }

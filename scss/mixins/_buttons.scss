@@ -7,18 +7,18 @@
   border-radius: 0.2em;
   cursor: pointer;
   transition: all 0.15s ease-in;
+  @media (hover: hover) and (pointer: fine) {
+    &:not(:disabled):not(.active) {
+      &:hover {
+        background: var.$secondary-text;
+        color: var.$button-text;
+      }
 
-  &:not(:disabled):not(.active) {
-    &:hover {
-      background: var.$secondary-text;
-      color: var.$button-text;
-    }
-
-    &:active {
-      background: var.$background;
+      &:active {
+        background: var.$background;
+      }
     }
   }
-
   &:disabled {
     cursor: not-allowed;
     transform: none;
