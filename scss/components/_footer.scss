@@ -1,0 +1,45 @@
+@use "../variables" as var;
+@use "../mixins/" as mix;
+footer {
+  display: block;
+  margin-top: 1em;
+  background: var.$button-text;
+  padding: 0.5em 1em;
+
+  .pagination {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 0.5em;
+
+    div {
+      @include mix.flex($justify: space-evenly);
+      overflow-x: scroll;
+      gap: 1em;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    button {
+      @include mix.buttons;
+      border: none;
+      padding: 0.5em;
+      width: 30px;
+      flex: 0 0 30px;
+    }
+
+    .active {
+      background: var.$primary-clr;
+      color: var.$button-text;
+
+      &:hover {
+        background: var.$primary-hover;
+      }
+
+      &:active {
+        background: var.$primary-clr;
+      }
+    }
+  }
+}

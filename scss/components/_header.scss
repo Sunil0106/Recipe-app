@@ -1,0 +1,182 @@
+@use "../mixins" as mix;
+@use "../variables" as var;
+
+header nav {
+  background: var.$button-text;
+  color: var.$primary-clr;
+  @include mix.flex($justify: space-between);
+  padding: 0.5em 1em;
+  gap: 1em;
+  border-bottom: 1px solid var.$border;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 65px;
+  z-index: 99;
+
+  .logo-container {
+    font-weight: 700;
+    font-size: 2em;
+    flex: 0 0 25%;
+    text-align: left;
+    @include mix.flex($justify: start);
+
+    i {
+      font-style: normal;
+    }
+  }
+
+  .search-container {
+    flex: 1;
+    text-align: center;
+    button {
+      padding: 0.5em 1em;
+      cursor: pointer;
+      font-size: 1em;
+      border: 1px solid var.$border;
+      transition: all 0.15s ease;
+      background: var.$primary-clr;
+      color: var.$button-text;
+      display: none;
+    }
+    input {
+      font-size: 1em;
+      border: 1px solid var.$border;
+      outline: none;
+      padding: 0.5em 1em;
+      width: 100%;
+    }
+  }
+
+  .favorite-meals-container {
+    flex: 0 0 15%;
+    @include mix.flex($justify: end);
+
+    button {
+      @include mix.flex;
+      gap: 0.5em;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: bold;
+      border: 1px solid var.$border;
+      transition: all 0.15s ease;
+      background: var.$primary-clr;
+      color: var.$button-text;
+      @media screen and (max-width: 670px) {
+        span {
+          display: none;
+        }
+      }
+      i {
+        font-style: normal;
+        color: var.$favorite;
+      }
+
+      &:hover {
+        background: var.$primary-hover;
+      }
+
+      &:hover i {
+        color: var.$button-text;
+      }
+
+      &:active {
+        background: var.$primary-clr;
+      }
+
+      &:active i {
+        color: var.$favorite;
+        transform: scale(1.1);
+      }
+    }
+  }
+  @media screen and (max-width: 590px) {
+    padding: 0.5em;
+    gap: 0.5em;
+    .favorite-meals-container {
+      flex: 0 0 10%;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .logo-container {
+      font-weight: 600;
+      font-size: 1.7em;
+      flex: 0 0 20%;
+      text-align: left;
+    }
+  }
+  @media screen and (max-width: 430px) {
+    .search-container {
+      @include mix.flex($justify: flex-end);
+      button {
+        display: block;
+      }
+      input {
+        display: none;
+      }
+    }
+    &.search-active {
+      .logo-container {
+        display: none;
+      }
+      .favorite-meals-container {
+        display: none;
+      }
+      .search-container {
+        flex: 1;
+        button {
+          display: none;
+        }
+        input {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+header .categories-container {
+  background: var.$button-text;
+  padding: 0.5em 1em;
+  overflow-x: auto;
+  white-space-collapse: collapse;
+  scrollbar-width: none;
+  position: fixed;
+  top: 65px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-bottom: 2px solid var.$border;
+  box-shadow: 0 2px 10px var.$border;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  ul {
+    @include mix.flex($justify: flex-start);
+    list-style-type: none;
+    gap: 1em;
+    width: max-content;
+    transition: all 0.15s ease-in;
+
+    li {
+      @include mix.buttons;
+    }
+
+    .active {
+      background: var.$primary-clr;
+      color: var.$button-text;
+
+      &:hover {
+        background: var.$primary-hover;
+      }
+
+      &:active {
+        background: var.$primary-clr;
+      }
+    }
+  }
+}

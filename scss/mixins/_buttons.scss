@@ -1,0 +1,26 @@
+@use "../variables/" as var;
+
+@mixin buttons() {
+  width: max-content;
+  background: var.$background;
+  padding: 0 1em;
+  border-radius: 0.2em;
+  cursor: pointer;
+  transition: all 0.15s ease-in;
+
+  &:not(:disabled):not(.active) {
+    &:hover {
+      background: var.$secondary-text;
+      color: var.$button-text;
+    }
+
+    &:active {
+      background: var.$background;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    transform: none;
+  }
+}

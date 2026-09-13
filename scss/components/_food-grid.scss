@@ -1,0 +1,139 @@
+@use "../variables" as var;
+
+main .food-display-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  width: min(100%, 1350px);
+  margin-inline: auto;
+
+  @media screen and (max-width: 1050px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 790px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 450px) {
+    grid-template-columns: 1fr;
+  }
+  .food-card {
+    width: 100%;
+    aspect-ratio: 1/1.5;
+    overflow: hidden;
+    padding: 0.5em;
+    background: var.$button-text;
+
+    .img-part {
+      width: 100%;
+      overflow: hidden;
+      height: 65%;
+      position: relative;
+      border-radius: 0.4em;
+
+      button {
+        position: absolute;
+        z-index: 10;
+        bottom: 0.2em;
+        right: 0.5em;
+        font-size: 1.2em;
+        border: none;
+        background: none;
+        color: var.$favorite;
+        font-weight: 900;
+        cursor: pointer;
+        transition: transform 0.15s linear;
+
+        .bi-heart-fill {
+          display: none;
+        }
+
+        &:hover {
+          .bi-heart {
+            display: none;
+          }
+
+          .bi-heart-fill {
+            display: inline;
+          }
+        }
+
+        &:active {
+          bottom: 0.3em;
+
+          .bi-heart-fill {
+            transform: scale(1.5);
+          }
+        }
+
+        &.is-favorite {
+          .bi-heart {
+            display: none;
+          }
+
+          .bi-heart-fill {
+            display: block;
+          }
+
+          &:hover {
+            .bi-heart-fill {
+              transform: scale(1.5);
+            }
+          }
+
+          &:active {
+            .bi-heart {
+              display: inline;
+            }
+
+            .bi-heart-fill {
+              display: none;
+              transform: scale(1.5);
+              bottom: 0.3em;
+            }
+          }
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+    }
+
+    .food-data-container {
+      margin-top: 0.5em;
+
+      h1 {
+        font-size: 1em;
+        color: var.$main-text;
+        font-weight: 700;
+      }
+
+      .food-origin {
+        font-style: italic;
+        font-size: 0.9em;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      .view-more {
+        font-size: 0.8em;
+        cursor: pointer;
+        transition: all 0.15s ease-in;
+
+        &:hover {
+          color: var.$primary-clr;
+          text-decoration: underline;
+          text-underline-offset: 4px;
+          text-underline-position: left;
+        }
+      }
+    }
+  }
+}

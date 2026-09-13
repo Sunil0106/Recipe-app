@@ -1,0 +1,134 @@
+@use "../variables" as var;
+@use "../mixins" as mix;
+main section.food-recipe-display {
+  display: block;
+  background: var.$background;
+  padding: 0.5em;
+
+  .recipe-header {
+    width: 100%;
+    height: calc(100vh - 108px);
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent, var.$background);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .recipe-name-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      transform: translate(-50%, -30%);
+      z-index: 20;
+      text-align: center;
+
+      .recipe-name {
+        font-size: 3.5em;
+        color: var.$primary-clr;
+        font-weight: 900;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .recipe-origin {
+        font-size: 3em;
+        font-weight: 100;
+      }
+    }
+  }
+
+  .ingredients-list-container {
+    @include mix.flex($direction: column, $align: flex-start);
+    margin-top: 1em;
+
+    table {
+      border: 2px solid var.$border;
+      padding: 0.5em;
+      margin: 0.5em 0;
+
+      tr,
+      td {
+        border: inherit;
+      }
+
+      tbody tr {
+        transition: background 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+          background: var.$primary-clr;
+        }
+      }
+    }
+  }
+
+  .recipe-instructions {
+    width: 100%;
+    margin-top: 1em;
+
+    table {
+      border-collapse: collapse;
+
+      tr,
+      td {
+        border: 2px solid var.$border;
+        padding: 0.5em;
+
+        &:first-child {
+          width: 10%;
+          vertical-align: top;
+        }
+
+        &:last-child {
+          text-align: justify;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    @include mix.flex($justify: space-between);
+    margin-top: 4em;
+    background: var.$button-text;
+    padding: 1em;
+
+    button {
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0.5em 1em;
+      border: 2px solid var.$border;
+      border-radius: 0.2em;
+      @include mix.flex;
+      transition: all 0.3s ease;
+
+      gap: 0.3em;
+
+      &:hover {
+        border-color: var.$youtube-red-darker;
+        color: var.$youtube-red;
+      }
+
+      &:active {
+        border-color: var.$border;
+        color: var.$border;
+      }
+    }
+  }
+}
